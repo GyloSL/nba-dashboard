@@ -1,0 +1,26 @@
+<div class="tables-container bg-gray">
+  <div class="row m-3">
+    <div class="col-md-6">
+      <label for="year" class="form-label">Selecciona la temporada:</label>
+      <select id="year" class="form-select" [(ngModel)]="season">
+        <option value="2023">2023</option>
+        <option
+          *ngFor="let year of [2022, 2021, 2020, 2019, 2018, 2017]"
+          [ngValue]="year"
+        >
+          {{ year }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="type" class="form-label">Selecciona el Top:</label>
+      <select id="type" class="form-select" [(ngModel)]="type">
+        <option value="scorers">Anotaciones</option>
+        <option value="assist">Asistencias</option>
+        <option value="rebounders">Rebotes</option>
+      </select>
+    </div>
+  </div>
+
+  <app-top-table [season]="season" [type]="type"></app-top-table>
+</div>

@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://api.sportradar.us",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
