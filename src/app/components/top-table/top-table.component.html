@@ -17,7 +17,12 @@
           <th mat-header-cell *matHeaderCellDef>Nombre</th>
           <td mat-cell *matCellDef="let player">
             {{ player.player_name }}
-            <mat-icon>info</mat-icon>
+            <button
+              aria-label="Ver estadisticas del jugador"
+              (click)="onNavigatePlayerStatistics(player)"
+            >
+              <mat-icon>info</mat-icon>
+            </button>
           </td>
         </ng-container>
 

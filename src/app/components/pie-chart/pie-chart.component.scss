@@ -1,0 +1,18 @@
+.canvas-container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+  padding: 15px 15px 15px;
+  gap: 20px;
+  border: 1px whitesmoke solid;
+}
+
+.circle {
+  margin: 0px 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}

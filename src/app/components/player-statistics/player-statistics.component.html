@@ -1,0 +1,135 @@
+<div class="bg-gray main-container p-4">
+  <div class="bg-dark stats-container">
+    <h2>{{ playerData?.player_name }} - {{ playerData?.team }}</h2>
+    <h4>Temporada {{ playerData?.season }}</h4>
+    <hr />
+    <h5 class="mb-3">Estadisticas completas de la temporada</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Estadística</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Edad</td>
+          <td>{{ playerData?.age }}</td>
+        </tr>
+        <tr>
+          <td>Juegos jugados</td>
+          <td>{{ playerData?.games }}</td>
+        </tr>
+        <tr>
+          <td>Juegos iniciados</td>
+          <td>{{ playerData?.games_started }}</td>
+        </tr>
+        <tr>
+          <td>Minutos jugados</td>
+          <td>{{ playerData?.minutes_played }}</td>
+        </tr>
+        <tr>
+          <td>Goles de campo</td>
+          <td>{{ playerData?.field_goals }}</td>
+        </tr>
+        <tr>
+          <td>Intentos de gol de campo</td>
+          <td>{{ playerData?.field_attempts }}</td>
+        </tr>
+        <tr>
+          <td>Porcentaje de gol de campo</td>
+          <td>{{ playerData?.field_percent }}</td>
+        </tr>
+        <tr>
+          <td>Tiros de tres puntos anotados</td>
+          <td>{{ playerData?.three_fg }}</td>
+        </tr>
+        <tr>
+          <td>Intentos de tiros de tres puntos</td>
+          <td>{{ playerData?.three_attempts }}</td>
+        </tr>
+        <tr>
+          <td>Porcentaje de tiros de tres puntos</td>
+          <td>{{ playerData?.three_percent }}</td>
+        </tr>
+        <tr>
+          <td>Tiros de dos puntos anotados</td>
+          <td>{{ playerData?.two_fg }}</td>
+        </tr>
+        <tr>
+          <td>Intentos de tiros de dos puntos</td>
+          <td>{{ playerData?.two_attempts }}</td>
+        </tr>
+        <tr>
+          <td>Porcentaje de tiros de dos puntos</td>
+          <td>{{ playerData?.two_percent }}</td>
+        </tr>
+        <tr>
+          <td>Porcentaje de efectividad en tiros de campo</td>
+          <td>{{ playerData?.effect_fg_percent }}</td>
+        </tr>
+        <tr>
+          <td>Tiros libres anotados</td>
+          <td>{{ playerData?.ft }}</td>
+        </tr>
+        <tr>
+          <td>Intentos de tiros libres</td>
+          <td>{{ playerData?.fta }}</td>
+        </tr>
+        <tr>
+          <td>Porcentaje de tiros libres</td>
+          <td>{{ playerData?.ft_percent }}</td>
+        </tr>
+        <tr>
+          <td>Rebotes ofensivos</td>
+          <td>{{ playerData?.ORB }}</td>
+        </tr>
+        <tr>
+          <td>Rebotes defensivos</td>
+          <td>{{ playerData?.DRB }}</td>
+        </tr>
+        <tr>
+          <td>Total de rebotes</td>
+          <td>{{ playerData?.TRB }}</td>
+        </tr>
+        <tr>
+          <td>Asistencias</td>
+          <td>{{ playerData?.AST }}</td>
+        </tr>
+        <tr>
+          <td>Robos</td>
+          <td>{{ playerData?.STL }}</td>
+        </tr>
+        <tr>
+          <td>Bloqueos</td>
+          <td>{{ playerData?.BLK }}</td>
+        </tr>
+        <tr>
+          <td>Pérdidas de balón</td>
+          <td>{{ playerData?.TOV }}</td>
+        </tr>
+        <tr>
+          <td>Faltas personales</td>
+          <td>{{ playerData?.PF }}</td>
+        </tr>
+        <tr>
+          <td>Puntos anotados</td>
+          <td>{{ playerData?.PTS }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="message-container">
+      <p>
+        Todos los datos fueron obtenidos mediante la API
+        <a href="https://nba-stats-db.herokuapp.com/api"
+          >https://nba-stats-db.herokuapp.com/api</a
+        >
+      </p>
+    </div>
+  </div>
+  <div class="charts-container">
+    <app-bar-chart [playerData]="playerData"></app-bar-chart>
+    <app-radar-chart [playerData]="playerData"></app-radar-chart>
+    <app-pie-chart [playerData]="playerData"></app-pie-chart>
+  </div>
+</div>

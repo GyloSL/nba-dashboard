@@ -3,7 +3,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ViewportScroller } from '@angular/common';
 import { NbaService } from '../../services/nba.service';
-import { PlayerStats } from 'src/app/models/playerStats-model';
+import { PlayerScore, PlayerStats } from 'src/app/models/playerStats-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-table',
@@ -15,11 +16,13 @@ export class TopTableComponent implements OnInit {
   private _season!: string;
 
   @Input() set season(value: string) {
+    this.isLoading = false;
     this._season = value;
     this.onChanges()
   };
 
   @Input() set type(value: 'scorers' | 'assist' | 'rebounders') {
+    this.isLoading = false;
     this._type = value;
     this.onChanges()
   };
@@ -37,7 +40,7 @@ export class TopTableComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  constructor(private nbaService: NbaService, private viewportScroller: ViewportScroller) { }
+  constructor(private nbaService: NbaService, private viewportScroller: ViewportScroller, private _router: Router) { }
 
   ngOnInit(): void {
     //this.onChanges()
@@ -53,6 +56,7 @@ export class TopTableComponent implements OnInit {
   }
 
   loadPlayerStats(season: string, type: 'scorers' | 'assist' | 'rebounders'): void {
+    if (this.isLoading) return
     this.isLoading = true;
     this.nbaService.getPlayerStatsBySeason(season, type).subscribe(
       (res: PlayerStats) => {
@@ -60,9 +64,12 @@ export class TopTableComponent implements OnInit {
           this.updateTableData(res)
         } else {
           console.log("Error");
+          this.isLoading = false;
         }
-        this.isLoading = false;
       },
+      (error) => {
+        this.isLoading = false;
+      }
     );
   }
 
@@ -74,9 +81,12 @@ export class TopTableComponent implements OnInit {
           this.updateTableData(res);
         } else {
           console.log("Error");
+          this.isLoading = false;
         }
-        this.isLoading = false;
       },
+      (error) => {
+        this.isLoading = false;
+      }
     );
   }
 
@@ -87,10 +97,10 @@ export class TopTableComponent implements OnInit {
       this.nextPageUrl = data.next;
       this.prevPageUrl = data.previous;
       this.count = data.count;
-      console.log(data.count)
     } else {
       console.error("No data found.");
     }
+    this.isLoading = false;
   }
 
   handlePageEvent(event: PageEvent): void {
@@ -119,5 +129,13 @@ export class TopTableComponent implements OnInit {
 
   scrollToTop(): void {
     this.viewportScroller.scrollToPosition([0, 0]);
+  }
+
+  onNavigatePlayerStatistics(player: PlayerScore) {
+    this._router.navigate(['player-statistics'], {
+      state: {
+        playerData: player
+      }
+    });
   }
 }

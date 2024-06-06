@@ -14,12 +14,22 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopTableComponent } from './components/top-table/top-table.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { PlayerStatisticsComponent } from './components/player-statistics/player-statistics.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { RadarChartComponent } from './components/radar-chart/radar-chart.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TopTableComponent,
+    PlayerStatisticsComponent,
+    BarChartComponent,
+    PieChartComponent,
+    RadarChartComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

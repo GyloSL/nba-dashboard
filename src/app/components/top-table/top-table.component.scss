@@ -30,3 +30,11 @@
   background-color: rgba(2, 2, 2, 0.8); /* Fondo semitransparente opcional */
   z-index: 1000; /* Asegura que el spinner esté por encima de otros elementos */
 }
+
+button {
+  background: none;
+  border: none;
+  mat-icon {
+    color: #d75b00;
+  }
+}
